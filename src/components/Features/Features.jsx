@@ -1,50 +1,12 @@
-import { BsWind, BsCupHot, BsDiagram3, BsFuelPump } from "react-icons/bs";
-import { PiShower, PiTelevisionSimple } from "react-icons/pi";
 import css from "./Features.module.css";
+import Categories from "../Categories/Categories";
 
 const Features = ({ camper }) => {
-  const getBadges = () => {
-    const badges = [];
-
-    badges.push({
-      label: camper.transmission,
-      icon: <BsDiagram3 size={20} />,
-    });
-
-    badges.push({
-      label: camper.engine,
-      icon: <BsFuelPump size={20} />,
-    });
-
-    if (camper.kitchen) {
-      badges.push({ label: "Kitchen", icon: <BsCupHot size={20} /> });
-    }
-
-    if (camper.AC) {
-      badges.push({ label: "AC", icon: <BsWind size={20} /> });
-    }
-
-    if (camper.bathroom) {
-      badges.push({ label: "Bathroom", icon: <PiShower size={20} /> });
-    }
-
-    if (camper.TV) {
-      badges.push({ label: "TV", icon: <PiTelevisionSimple size={20} /> });
-    }
-
-    return badges;
-  };
-
   return (
     <div className={css.container}>
-      <ul className={css.list}>
-        {getBadges().map((badge, index) => (
-          <li key={index} className={css.badge}>
-            {badge.icon}
-            <span className={css.text}>{badge.label}</span>
-          </li>
-        ))}
-      </ul>
+      <div className={css.badgesWrapper}>
+        <Categories camper={camper} />
+      </div>
 
       <h3 className={css.detailsTitle}>Vehicle details</h3>
 

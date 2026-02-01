@@ -6,8 +6,8 @@
 .label {
   display: block;
   margin-bottom: 8px;
-  color: var(--color-secondary);
-  font-weight: 500;
+  color: var(--color-placeholder);
+  font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
 }
@@ -22,7 +22,7 @@
   padding: 18px 18px 18px 44px;
   border-radius: 12px;
   border: none;
-  background-color: var(--color-inputs);
+  background-color: var(--color-bg-light);
   font-size: 16px;
   line-height: 1.25;
   color: var(--color-main);
@@ -30,7 +30,7 @@
 }
 
 .input::placeholder {
-  color: rgba(16, 24, 40, 0.6);
+  color: var(--color-main);
 }
 
 .inputIcon {
@@ -46,9 +46,10 @@
 
 .separator {
   margin-bottom: 30px;
+  line-height: 1.5;
   font-size: 16px;
   font-weight: 500;
-  color: var(--color-border);
+  color: var(--color-secondary);
 }
 
 .title {

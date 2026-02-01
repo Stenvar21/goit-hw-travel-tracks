@@ -2,8 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { FaStar, FaHeart, FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import css from "./CamperCard.module.css";
-import Features from "../Features/Features";
 import { toggleFavorite, selectFavorites } from "../../redux/favorites/slice";
+import Categories from "../Categories/Categories";
 
 const CamperCard = ({ camper }) => {
   const dispatch = useDispatch();
@@ -53,7 +53,7 @@ const CamperCard = ({ camper }) => {
 
         <p className={css.description}>{camper.description}</p>
 
-        <Features camper={camper} />
+        <Categories camper={camper} />
 
         <Link to={`/catalog/${camper.id}`} className={css.button}>
           Show more

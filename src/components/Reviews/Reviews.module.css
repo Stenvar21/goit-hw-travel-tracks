@@ -1,33 +1,51 @@
 .list {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 44px;
+  padding: 0;
+  list-style: none;
+  margin: 0;
+  width: 100%;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .header {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 16px;
 }
 
 .avatar {
   width: 60px;
   height: 60px;
-  background-color: var(--color-inputs);
-  color: var(--color-button);
   border-radius: 50%;
+  background-color: var(--color-inputs);
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 24px;
+  align-items: center;
   font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+  color: var(--color-button);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .name {
-  font-size: 18px;
   font-weight: 600;
-  margin-bottom: 4px;
+  font-size: 18px;
+  line-height: 1.33;
+  color: var(--color-main);
+  margin: 0;
 }
 
 .stars {
@@ -35,7 +53,18 @@
   gap: 4px;
 }
 
+.starFilled {
+  color: #ffc531;
+}
+
+.starEmpty {
+  color: var(--color-inputs);
+}
+
 .comment {
-  color: var(--color-secondary);
+  font-weight: 400;
+  font-size: 16px;
   line-height: 1.5;
+  color: var(--color-secondary);
+  margin: 0;
 }

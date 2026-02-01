@@ -129,15 +129,17 @@
 
 .bottomSection {
   display: flex;
-  gap: 64px;
+  gap: 40px;
+  margin-top: 44px;
+  justify-content: space-between;
 }
 
 .leftColumn {
-  width: 50%;
+  width: auto;
 }
 
 .rightColumn {
-  width: 50%;
+  width: auto;
 }
 
 .detailsTitle {

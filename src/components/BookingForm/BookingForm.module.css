@@ -1,52 +1,91 @@
 .container {
-  border: 1px solid rgba(16, 24, 40, 0.2);
+  border: 1px solid var(--color-border);
   border-radius: 10px;
-  padding: 24px;
-  width: 100%;
-  max-width: 448px;
+  padding: 44px;
+  background-color: white;
+  width: 641px;
+  height: 588px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
   font-size: 20px;
   font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-main);
   margin-bottom: 8px;
 }
 
 .subtitle {
-  color: var(--color-secondary);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-placeholder);
   margin-bottom: 24px;
 }
 
 .form {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+}
+
+.inputsGroup {
+  display: flex;
+  flex-direction: column;
   gap: 14px;
+}
+
+.fieldWrapper {
+  width: 100%;
+  position: relative;
 }
 
 .input {
   width: 100%;
+  height: 60px;
   padding: 18px;
   border-radius: 10px;
   background-color: var(--color-inputs);
   border: none;
   font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-main);
   outline: none;
+  box-sizing: border-box;
+}
+
+.input::placeholder {
+  color: var(--color-placeholder);
+}
+
+.datePickerWrapper {
+  width: 100%;
+  display: block;
 }
 
 .textarea {
-  height: 114px;
+  height: 118px;
   resize: none;
+  display: block;
 }
 
 .btn {
-  width: 160px;
+  margin-top: 24px;
+  align-self: center;
   padding: 16px 60px;
+  min-width: 160px;
   background-color: var(--color-button);
   color: #fff;
   border-radius: 200px;
   border: none;
   font-weight: 500;
-  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: background-color var(--transition);
 }
 
 .btn:hover {
@@ -54,8 +93,9 @@
 }
 
 .error {
-  color: red;
+  color: var(--color-button);
   font-size: 12px;
   margin-top: 4px;
+  margin-left: 4px;
   display: block;
 }

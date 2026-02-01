@@ -37,51 +37,58 @@ const BookingForm = () => {
       >
         {({ setFieldValue }) => (
           <Form className={css.form}>
-            <div className={css.fieldWrapper}>
-              <Field name="name" placeholder="Name*" className={css.input} />
-              <ErrorMessage
-                name="name"
-                component="span"
-                className={css.error}
-              />
-            </div>
+            <div className={css.inputsGroup}>
+              <div className={css.fieldWrapper}>
+                <Field name="name" placeholder="Name*" className={css.input} />
+                <ErrorMessage
+                  name="name"
+                  component="span"
+                  className={css.error}
+                />
+              </div>
 
-            <div className={css.fieldWrapper}>
-              <Field name="email" placeholder="Email*" className={css.input} />
-              <ErrorMessage
-                name="email"
-                component="span"
-                className={css.error}
-              />
-            </div>
+              <div className={css.fieldWrapper}>
+                <Field
+                  name="email"
+                  placeholder="Email*"
+                  className={css.input}
+                />
+                <ErrorMessage
+                  name="email"
+                  component="span"
+                  className={css.error}
+                />
+              </div>
 
-            <div className={css.fieldWrapper}>
-              <DatePicker
-                selected={startDate}
-                onChange={(date) => {
-                  setStartDate(date);
-                  setFieldValue("date", date);
-                }}
-                placeholderText="Booking date*"
-                className={css.input}
-                dateFormat="dd.MM.yyyy"
-              />
-              <ErrorMessage
-                name="date"
-                component="span"
-                className={css.error}
-              />
-            </div>
+              <div className={css.fieldWrapper}>
+                <DatePicker
+                  selected={startDate}
+                  onChange={(date) => {
+                    setStartDate(date);
+                    setFieldValue("date", date);
+                  }}
+                  placeholderText="Booking date*"
+                  className={css.input}
+                  dateFormat="dd.MM.yyyy"
+                  minDate={new Date()}
+                  wrapperClassName={css.datePickerWrapper}
+                />
+                <ErrorMessage
+                  name="date"
+                  component="span"
+                  className={css.error}
+                />
+              </div>
 
-            <div className={css.fieldWrapper}>
-              <Field
-                as="textarea"
-                name="comment"
-                placeholder="Comment"
-                className={`${css.input} ${css.textarea}`}
-              />
+              <div className={css.fieldWrapper}>
+                <Field
+                  as="textarea"
+                  name="comment"
+                  placeholder="Comment"
+                  className={`${css.input} ${css.textarea}`}
+                />
+              </div>
             </div>
-
             <button type="submit" className={css.btn}>
               Send
             </button>
