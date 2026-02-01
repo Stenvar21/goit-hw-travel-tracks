@@ -1,16 +1,86 @@
-# React + Vite
+# TravelTrucks 🚐
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Веб-застосунок для пошуку та бронювання камперів. Додаток дозволяє користувачам переглядати каталог доступних транспортних засобів, фільтрувати їх за типом та обладнанням, переглядати детальні характеристики, відгуки та бронювати обраний кампер.
 
-Currently, two official plugins are available:
+## 📋 Функціонал
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Головна сторінка:** Презентація сервісу та заклик до дії.
+- **Каталог:** Список доступних камперів із пагінацією (кнопка "Load More").
+- **Фільтрація:** Можливість фільтрувати за локацією, обладнанням (кондиціонер, автомат, кухня, телевізор, душ) та типом кузова (Van, Fully Integrated, Alcove).
+- **Детальна сторінка:** Детальна інформація про кампер, галерея фотографій, опис, технічні характеристики та відгуки користувачів.
+- **Бронювання:** Форма для бронювання з валідацією полів та календарем.
+- **Обране:** (Опціонально) Можливість зберігати кампери, що сподобалися.
 
-## React Compiler
+## 🛠 Технології
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Core:** React, Vite
+- **State Management:** Redux Toolkit
+- **Routing:** React Router DOM
+- **Styling:** CSS Modules, Modern Normalize
+- **HTTP Client:** Axios
+- **Forms:** Formik, Yup
+- **UI Components:** React Datepicker, React Icons, React Hot Toast, React Loader Spinner
 
-## Expanding the ESLint configuration
+## 🚀 Інструкція із запуску
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Виконуй ці кроки, щоб запустити проєкт на локальному комп'ютері.
+
+### Попередні вимоги
+
+- Node.js (рекомендована версія v18.0.0 або вище)
+- npm (або yarn/pnpm)
+
+### Встановлення
+
+1.  **Клонування репозиторію:**
+
+    ```bash
+    git clone [https://github.com/Stenvar21/goit-hw-travel-tracks.git](https://github.com/Stenvar21/goit-hw-travel-tracks.git)
+    cd goit-hw-travel-tracks
+    ```
+
+2.  **Встановлення залежностей:**
+
+    ```bash
+    npm install
+    ```
+
+3.  **Запуск режиму розробки:**
+
+    ```bash
+    npm run dev
+    ```
+
+4.  **Відкриття в браузері:**
+    Перейди за посиланням [http://localhost:5173](http://localhost:5173), щоб побачити застосунок.
+
+## 🏗 Збірка (Build)
+
+Щоб створити оптимізовану версію для продакшену:
+
+```bash
+npm run build
+```
+
+Щоб переглянути зібрану версію локально:
+
+```bash
+npm run preview
+```
+
+## 📂 Структура проєкту
+
+```text
+src/
+├── assets/          # Статичні файли (зображення, іконки)
+├── components/      # Перевикористовувані UI компоненти
+├── pages/           # Компоненти сторінок (HomePage, CatalogPage, CamperDetailsPage)
+├── redux/           # Налаштування Redux (слайси, операції, стор)
+├── App.jsx          # Головний компонент із маршрутизацією
+├── main.jsx         # Точка входу
+└── index.css        # Глобальні стилі та змінні
+```
+
+## 🔗 Live Demo
+
+[Подивитись проєкт на Vercel](https://goit-hw-travel-tracks.vercel.app/)
