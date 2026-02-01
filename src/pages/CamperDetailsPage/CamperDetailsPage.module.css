@@ -131,7 +131,7 @@
   display: flex;
   gap: 40px;
   margin-top: 44px;
-  justify-content: space-between;
+  align-items: stretch;
 }
 
 .leftColumn {

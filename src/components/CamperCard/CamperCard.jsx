@@ -53,7 +53,7 @@ const CamperCard = ({ camper }) => {
 
         <p className={css.description}>{camper.description}</p>
 
-        <Categories camper={camper} />
+        <Categories camper={camper} limit={7} />
 
         <Link to={`/catalog/${camper.id}`} className={css.button}>
           Show more

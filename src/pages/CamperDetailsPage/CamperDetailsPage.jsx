@@ -10,6 +10,7 @@ import css from "./CamperDetailsPage.module.css";
 import Features from "../../components/Features/Features";
 import Reviews from "../../components/Reviews/Reviews";
 import BookingForm from "../../components/BookingForm/BookingForm";
+import Loader from "../../components/Loader/Loader";
 
 const CamperDetailsPage = () => {
   const { id } = useParams();
@@ -49,8 +50,10 @@ const CamperDetailsPage = () => {
   }
 
   if (isLoading || !camper) {
-    return <div className={css.loader}>Loading details...</div>;
+    return <Loader />;
   }
+
+  if (!camper) return null;
 
   return (
     <div className={css.container}>

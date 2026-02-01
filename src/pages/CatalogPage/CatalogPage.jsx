@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCampers } from "../../redux/campers/operations";
 import {
@@ -14,6 +14,7 @@ import {
   selectForm,
   selectEquipment,
 } from "../../redux/filters/slice";
+import Loader from "../../components/Loader/Loader";
 import css from "./CatalogPage.module.css";
 
 const CatalogPage = () => {
@@ -22,38 +23,53 @@ const CatalogPage = () => {
   const isLoading = useSelector(selectLoading);
   const error = useSelector(selectError);
   const total = useSelector(selectTotal);
+
   const location = useSelector(selectLocation);
   const form = useSelector(selectForm);
   const equipment = useSelector(selectEquipment);
 
-  const [page, setPage] = useState(1);
   const LIMIT = 4;
 
-  const prevCampersLength = useRef(0);
+  const prevCampersLength = useRef(campers.length);
 
   useEffect(() => {
-    if (page === 1) {
-      dispatch(fetchCampers({ page: 1, limit: LIMIT }));
+    if (campers.length === 0) {
+      const filters = { location, form };
+      equipment.forEach((item) => {
+        if (item === "Automatic") {
+          filters.transmission = "automatic";
+        } else {
+          filters[item] = true;
+        }
+      });
+
+      dispatch(fetchCampers({ page: 1, limit: LIMIT, ...filters }));
     }
-  }, [dispatch, page]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch]);
 
   useEffect(() => {
     if (campers.length > prevCampersLength.current) {
       if (prevCampersLength.current !== 0) {
-        window.scrollBy({
-          top: 800,
-          behavior: "smooth",
-        });
+        window.scrollBy({ top: 400, behavior: "smooth" });
       }
       prevCampersLength.current = campers.length;
+    } else if (campers.length === 0) {
+      prevCampersLength.current = 0;
     }
   }, [campers]);
 
   const handleLoadMore = () => {
-    const nextPage = page + 1;
-    setPage(nextPage);
+    const nextPage = Math.ceil(campers.length / LIMIT) + 1;
+
     const filters = { location, form };
-    equipment.forEach((item) => (filters[item] = true));
+    equipment.forEach((item) => {
+      if (item === "Automatic") {
+        filters.transmission = "automatic";
+      } else {
+        filters[item] = true;
+      }
+    });
 
     dispatch(fetchCampers({ page: nextPage, limit: LIMIT, ...filters }));
   };
@@ -77,7 +93,7 @@ const CatalogPage = () => {
           <p className={css.notFound}>No campers found with these filters.</p>
         )}
 
-        {isLoading && <p className={css.loader}>Loading info...</p>}
+        {isLoading && <Loader />}
 
         {error && <p className={css.error}>Something went wrong! Try again.</p>}
 

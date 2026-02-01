@@ -6,17 +6,12 @@ import {
   BsDroplet,
   BsFire,
 } from "react-icons/bs";
-import {
-  PiShower,
-  PiTelevisionSimple,
-  PiRadio,
-  PiRefrigerator,
-  PiMicrowave,
-} from "react-icons/pi";
+import { PiShower, PiTelevisionSimple, PiRadio } from "react-icons/pi";
+import { LuMicrowave, LuRefrigerator } from "react-icons/lu";
 
 import css from "./Categories.module.css";
 
-const Categories = ({ camper }) => {
+const Categories = ({ camper, limit = null }) => {
   const getBadges = () => {
     const badges = [];
 
@@ -53,12 +48,12 @@ const Categories = ({ camper }) => {
     if (camper.refrigerator) {
       badges.push({
         label: "Refrigerator",
-        icon: <PiRefrigerator size={20} />,
+        icon: <LuRefrigerator size={20} />,
       });
     }
 
     if (camper.microwave) {
-      badges.push({ label: "Microwave", icon: <PiMicrowave size={20} /> });
+      badges.push({ label: "Microwave", icon: <LuMicrowave size={20} /> });
     }
 
     if (camper.gas) {
@@ -72,9 +67,13 @@ const Categories = ({ camper }) => {
     return badges;
   };
 
+  const allBadges = getBadges();
+
+  const visibleBadges = limit ? allBadges.slice(0, limit) : allBadges;
+
   return (
     <ul className={css.list}>
-      {getBadges().map((badge, index) => (
+      {visibleBadges.map((badge, index) => (
         <li key={index} className={css.badge}>
           {badge.icon}
           <span className={css.text}>{badge.label}</span>

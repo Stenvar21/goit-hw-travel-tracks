@@ -8,7 +8,7 @@ import {
   BsGrid3X3Gap,
 } from "react-icons/bs";
 import { PiShower, PiTelevisionSimple } from "react-icons/pi";
-import { IoMapOutline } from "react-icons/io5"; // Іконка карти
+import { IoMapOutline } from "react-icons/io5";
 
 import {
   changeLocation,
@@ -39,9 +39,14 @@ const Sidebar = () => {
     };
 
     equipment.forEach((item) => {
-      filters[item] = true;
+      if (item === "Automatic") {
+        filters.transmission = "automatic";
+      } else {
+        filters[item] = true;
+      }
     });
 
+    console.log("Відправляємо фільтри:", filters);
     dispatch(fetchCampers({ page: 1, limit: 4, ...filters }));
   };
 
@@ -69,7 +74,7 @@ const Sidebar = () => {
           {[
             { id: "AC", icon: <BsWind size={32} />, label: "AC" },
             {
-              id: "automatic",
+              id: "Automatic",
               icon: <BsDiagram3 size={32} />,
               label: "Automatic",
             },

@@ -1,6 +1,7 @@
 .container {
   width: 631px;
-  height: 588px;
+  min-height: 588px;
+  height: auto;
   background-color: var(--color-bg-light);
   border-radius: 10px;
   padding: 44px 52px;
@@ -10,7 +11,7 @@
 }
 
 .badgesWrapper {
-  margin-bottom: 100px;
+  margin-bottom: auto;
 }
 
 .detailsTitle {
