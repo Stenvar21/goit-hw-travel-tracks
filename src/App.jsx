@@ -1,20 +1,29 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import CatalogPage from "./pages/CatalogPage/CatalogPage";
 import CamperDetailsPage from "./pages/CamperDetailsPage/CamperDetailsPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import Navigation from "./components/Navigation/Navigation";
 
-function App() {
+const Layout = () => {
   return (
     <>
       <Navigation />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/catalog" element={<CatalogPage />} />
-        <Route path="/catalog/:id" element={<CamperDetailsPage />} />
-        <Route path="*" element={<HomePage />} />
-      </Routes>
+      <Outlet />
     </>
+  );
+};
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="catalog" element={<CatalogPage />} />
+        <Route path="catalog/:id" element={<CamperDetailsPage />} />
+      </Route>
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
   );
 }
 
